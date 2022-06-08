@@ -1,38 +1,105 @@
-.App {
-  text-align: center;
+:root {
+  --font-color: #333;
+  --background-color: #eee;
+  --link-color: cornflowerblue;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+[data-theme="dark"] {
+  --font-color: #dfdfdf;
+  --background-color: #333;
+  --link-color: lightblue;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  background-color: var(--background-color);
+  color: var(--font-color);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+a {
+  color: var(--link-color);
+}
+
+/* Custom Dark Mode Toggle Element */
+
+.toggle-theme-wrapper {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-top: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.toggle-theme-wrapper span {
+  font-size: 28px;
+  margin: 0 4px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.toggle-theme {
+  position: relative;
+  display: inline-block;
+  height: 34px;
+  width: 60px;
+}
+
+.toggle-theme input {
+  display: none;
+}
+
+.slider {
+  background-color: #ccc;
+  position: absolute;
+  cursor: pointer;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  transition: 0.2s;
+}
+
+.slider:before {
+  background-color: #fff;
+  bottom: 4px;
+  content: "";
+  height: 26px;
+  left: 4px;
+  position: absolute;
+  transition: 0.4s;
+  width: 26px;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+input:checked + .slider {
+  background-color: cornflowerblue;
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.detail-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  flex-direction: column;
+}
+
+.detail-title {
+  font-size: 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.detail-description {
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  padding: 0 200px;
+  margin-top: 20px;
 }
